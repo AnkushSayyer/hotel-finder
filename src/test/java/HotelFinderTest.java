@@ -2,6 +2,7 @@ import com.hashmap.excercise.Customer;
 import com.hashmap.excercise.HotelBookingCompany;
 import com.hashmap.excercise.HotelCatalogue;
 import com.hashmap.excercise.Request;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,15 +11,22 @@ public class HotelFinderTest {
 
     private HotelCatalogue hotelCatalogue;
     private HotelBookingCompany hotelBookingCompany;
+    private static boolean initialized = false;
 
     @Before
-    public void init(){
+    public void init() {
         hotelBookingCompany = new HotelBookingCompany();
 
         hotelCatalogue = HotelCatalogue.getInstance();
-        hotelCatalogue.addHotel("LakeWood", 3, 110, 90, 80, 80);
-        hotelCatalogue.addHotel("BridgeWood", 4, 160, 60, 110, 50);
-        hotelCatalogue.addHotel("RidgeWood", 5, 220,150,100,40);
+
+        if (!initialized){
+
+            hotelCatalogue.addHotel("LakeWood", 3, 110, 90, 80, 80);
+            hotelCatalogue.addHotel("BridgeWood", 4, 160, 60, 110, 50);
+            hotelCatalogue.addHotel("RidgeWood", 5, 220, 150, 100, 40);
+
+            initialized = true;
+        }
 
     }
 
