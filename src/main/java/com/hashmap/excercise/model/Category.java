@@ -1,6 +1,4 @@
-package com.hashmap.excercise;
-
-import java.time.DayOfWeek;
+package com.hashmap.excercise.model;
 
 public class Category {
 
@@ -13,23 +11,23 @@ public class Category {
     }
 
     @Override
-    public boolean equals(Object obj)
+    public boolean equals(Object categoryObj)
     {
 
         // if both the object references are
         // referring to the same object.
-        if(this == obj)
+        if(this == categoryObj)
             return true;
 
         // it checks if the argument is of the
         // type Category by comparing the classes
         // of the passed argument and this object.
         // if(!(obj instanceof Category)) return false; ---> avoid.
-        if(obj == null || obj.getClass()!= this.getClass())
+        if(categoryObj == null || categoryObj.getClass()!= this.getClass())
             return false;
 
         // type casting of the argument.
-        Category category = (Category) obj;
+        Category category = (Category) categoryObj;
 
         // comparing the state of argument with
         // the state of 'this' Object.

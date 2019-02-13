@@ -1,4 +1,4 @@
-package com.hashmap.excercise;
+package com.hashmap.excercise.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,18 +20,18 @@ public class RateCard {
     }
 
     private static void addRewardsWeekendPrice(double rewardsWeekendPrice) {
-        rateCard.put(new Category(Customer.REWARDS, Day.WEEKENDS), rewardsWeekendPrice);
+        rateCard.put(new Category(Customer.REWARDS, Day.WEEKEND), rewardsWeekendPrice);
     }
 
     private static void addRewardsWeekdayPrice(double rewardsWeekdayPrice) {
-        rateCard.put(new Category(Customer.REWARDS, Day.WEEKDAYS), rewardsWeekdayPrice);
+        rateCard.put(new Category(Customer.REWARDS, Day.WEEKDAY), rewardsWeekdayPrice);
     }
 
     private static void addRegularWeekendPrice(double regularWeekendPrice) {
-        rateCard.put(new Category(Customer.REGULAR, Day.WEEKENDS), regularWeekendPrice);
+        rateCard.put(new Category(Customer.REGULAR, Day.WEEKEND), regularWeekendPrice);
     }
 
     private static void addRegularWeekdayPrice(double regularWeekdayPrice) {
-        rateCard.put(new Category(Customer.REGULAR, Day.WEEKDAYS), regularWeekdayPrice);
+        rateCard.put(new Category(Customer.REGULAR, Day.WEEKDAY), regularWeekdayPrice);
     }
 }

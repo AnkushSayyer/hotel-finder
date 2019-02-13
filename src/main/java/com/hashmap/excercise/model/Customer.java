@@ -1,4 +1,4 @@
-package com.hashmap.excercise;
+package com.hashmap.excercise.model;
 
 public enum Customer {
     REGULAR, REWARDS;

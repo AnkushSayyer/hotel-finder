@@ -1,4 +1,6 @@
-package com.hashmap.excercise;
+package com.hashmap.excercise.model;
+
+import com.hashmap.excercise.model.Category;
 
 import java.util.Map;
 

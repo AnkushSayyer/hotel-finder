@@ -1,9 +1,7 @@
-package com.hashmap.excercise;
+package com.hashmap.excercise.model;
 
 import java.util.ArrayList;
 import java.util.Map;
-
-import static com.hashmap.excercise.RateCard.generateRateCard;
 
 public class HotelCatalogue {
 

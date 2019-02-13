@@ -1,4 +1,4 @@
-package com.hashmap.excercise;
+package com.hashmap.excercise.util;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

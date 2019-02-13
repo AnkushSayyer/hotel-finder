@@ -1,4 +1,7 @@
-package com.hashmap.excercise;
+package com.hashmap.excercise.service;
+
+import com.hashmap.excercise.model.Request;
+import com.hashmap.excercise.model.*;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -6,22 +9,24 @@ import java.util.List;
 
 public class HotelBookingCompany implements BookingService {
 
-    int weekends,weekdays;
+    private int weekends;
+    private  int weekdays;
+    private HotelCatalogue hotelCatalogue = HotelCatalogue.getInstance();
+    private List<Hotel> hotelList = hotelCatalogue.getHotelList();
+
     @Override
-    public Hotel findCheapestHotel(Request clientRequest) {
+    public Hotel getCheapestHotel(Request clientRequest) {
 
-        calculateWeekdaysAndWeekends(clientRequest.checkInDateString, clientRequest.checkOutDateString);
+        calculateWeekdaysAndWeekends(clientRequest.getCheckInDate(), clientRequest.getCheckOutDate());
 
-        HotelCatalogue hotelCatalogue = HotelCatalogue.getInstance();
+        return findCheapestHotel(clientRequest);
+    }
 
-        List<Hotel> hotelList = hotelCatalogue.getHotelList();
-
-        double minPrice = getTotal(hotelList.get(0), clientRequest.customer);
-
+    private Hotel findCheapestHotel(Request clientRequest){
+        double minPrice = getTotal(hotelList.get(0), clientRequest.getCustomer());
         Hotel cheapestHotel = hotelList.get(0);
-
         for (int i=1; i<hotelList.size(); i++){
-            double currentHotelPrice = getTotal(hotelList.get(i), clientRequest.customer);
+            double currentHotelPrice = getTotal(hotelList.get(i), clientRequest.getCustomer());
             if(minPrice>currentHotelPrice){
                 minPrice = currentHotelPrice;
                 cheapestHotel = hotelList.get(i);
@@ -33,20 +38,15 @@ public class HotelBookingCompany implements BookingService {
                 }
 
             }
-
-
         }
 
         return cheapestHotel;
     }
 
-    private void calculateWeekdaysAndWeekends(String checkInDateString, String checkOutDateString) {
+    private void calculateWeekdaysAndWeekends(LocalDate checkInDate, LocalDate checkOutDate) {
 
         weekdays = 0;
         weekends = 0;
-
-        LocalDate checkInDate = DateFromStringUtil.getDateFromString(checkInDateString);
-        LocalDate checkOutDate = DateFromStringUtil.getDateFromString(checkOutDateString);
 
         LocalDate tempDate = checkInDate;
         LocalDate tempChkOutDate = checkOutDate.plusDays(1);
@@ -68,8 +68,8 @@ public class HotelBookingCompany implements BookingService {
 
     private double getTotal(Hotel hotel, Customer customer){
 
-        return hotel.getRate(new Category(customer, Day.WEEKDAYS))*weekdays +
-                hotel.getRate(new Category(customer, Day.WEEKENDS))*weekends;
+        return hotel.getRate(new Category(customer, Day.WEEKDAY))*weekdays +
+                hotel.getRate(new Category(customer, Day.WEEKEND))*weekends;
 
     }
 }
