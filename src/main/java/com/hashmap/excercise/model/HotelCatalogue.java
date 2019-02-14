@@ -31,7 +31,7 @@ public class HotelCatalogue {
 
     public void addHotel(String name, int rating, double regularWeekdayPrice, double regularWeekendPrice, double rewardsWeekdayPrice, double rewardsWeekendPrice){
 
-        Map<Category, Double> rateCard = RateCard.generateRateCard(regularWeekdayPrice, regularWeekendPrice, rewardsWeekdayPrice, rewardsWeekendPrice);
+        Map<Category, Double> rateCard = new RateCard().generateRateCard(regularWeekdayPrice, regularWeekendPrice, rewardsWeekdayPrice, rewardsWeekendPrice);
         hotelList.add(new Hotel(name, rating, rateCard));
     }
 
