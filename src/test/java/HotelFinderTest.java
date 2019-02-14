@@ -32,17 +32,17 @@ public class HotelFinderTest {
 
     @Test
     public void hotelFinderTest(){
-        Assert.assertEquals("LakeWood", hotelBookingCompany.findCheapestHotel(new Request(Customer.REGULAR, DateFromStringUtil.getDateFromString("16/3/2009"), DateFromStringUtil.getDateFromString("18/3/2009"))).toString());
+        Assert.assertEquals("LakeWood", hotelBookingCompany.getCheapestHotel(new Request(Customer.REGULAR, DateFromStringUtil.getDateFromString("16/3/2009"), DateFromStringUtil.getDateFromString("18/3/2009"))).toString());
     }
 
     @Test
     public void hotelFinderTest2(){
-        Assert.assertEquals("BridgeWood", hotelBookingCompany.findCheapestHotel(new Request(Customer.REGULAR, DateFromStringUtil.getDateFromString("20/3/2009"), DateFromStringUtil.getDateFromString("22/3/2009"))).toString());
+        Assert.assertEquals("BridgeWood", hotelBookingCompany.getCheapestHotel(new Request(Customer.REGULAR, DateFromStringUtil.getDateFromString("20/3/2009"), DateFromStringUtil.getDateFromString("22/3/2009"))).toString());
     }
 
     @Test
     public void hotelFinderTest3(){
-        Assert.assertEquals("RidgeWood", hotelBookingCompany.findCheapestHotel(new Request(Customer.REWARDS, DateFromStringUtil.getDateFromString("26/3/2009"), DateFromStringUtil.getDateFromString("28/3/2009"))).toString());
+        Assert.assertEquals("RidgeWood", hotelBookingCompany.getCheapestHotel(new Request(Customer.REWARDS, DateFromStringUtil.getDateFromString("26/3/2009"), DateFromStringUtil.getDateFromString("28/3/2009"))).toString());
     }
 
 }

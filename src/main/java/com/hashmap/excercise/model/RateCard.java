@@ -7,7 +7,7 @@ public class RateCard {
 
     private Map<Category,Double> rateCard;
 
-    public Map<Category, Double> generateRateCard(double regularWeekdayPrice, double regularWeekendPrice, double rewardsWeekdayPrice, double rewardsWeekendPrice){
+    public Map<Category, Double> generateRateCard(Price price){
 
         rateCard = new HashMap<Category, Double>();
 
@@ -16,7 +16,13 @@ public class RateCard {
         addRewardsWeekdayPrice(rewardsWeekdayPrice);
         addRewardsWeekendPrice(rewardsWeekendPrice);
 
+        addCategoryAndRate(new Category(Customer.REWARDS, Day.WEEKEND), price.);
+
         return rateCard;
+    }
+
+    private void addCategoryAndRate(Category category, Double rate){
+
     }
 
     private void addRewardsWeekendPrice(double rewardsWeekendPrice) {
