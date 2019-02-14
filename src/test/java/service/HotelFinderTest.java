@@ -1,3 +1,5 @@
+package service;
+
 import com.hashmap.excercise.model.Customer;
 import com.hashmap.excercise.model.HotelCatalogue;
 import com.hashmap.excercise.model.Price;

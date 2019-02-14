@@ -42,16 +42,13 @@ public class HotelBookingCompany implements BookingService {
         LocalDate tempDate = checkInDate;
         LocalDate tempChkOutDate = checkOutDate.plusDays(1);
 
-        if(!tempDate.equals(checkOutDate)){
-            while (!tempDate.equals(tempChkOutDate)){
-                if(tempDate.getDayOfWeek()== DayOfWeek.SATURDAY||tempDate.getDayOfWeek()==DayOfWeek.SUNDAY)
-                    weekends++;
-                else
-                    weekdays++;
-                tempDate = tempDate.plusDays(1);
-            }
+        while (!tempDate.equals(tempChkOutDate)){
+            if(tempDate.getDayOfWeek()== DayOfWeek.SATURDAY||tempDate.getDayOfWeek()==DayOfWeek.SUNDAY)
+                weekends++;
+            else
+                weekdays++;
+            tempDate = tempDate.plusDays(1);
         }
-
     }
 
     private double getTotal(Hotel hotel, Customer customer){

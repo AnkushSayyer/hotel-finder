@@ -10,7 +10,7 @@ public class RateCard {
     public Map<Category, Double> generateRateCard(Price price){
         rateCard = new HashMap<Category, Double>();
         addRegularCustomerRates(price);
-        addRewardCustomerRates(price);
+        addRewardCustomerRate(price);
         return rateCard;
     }
 
@@ -19,7 +19,7 @@ public class RateCard {
         addCategoryAndRateToRateCard(new Category(Customer.REGULAR, Day.WEEKEND), price.getRegularWeekendPrice());
     }
 
-    private void addRewardCustomerRates(Price price) {
+    private void addRewardCustomerRate(Price price) {
         addCategoryAndRateToRateCard(new Category(Customer.REWARDS, Day.WEEKEND), price.getRewardsWeekendPrice());
         addCategoryAndRateToRateCard(new Category(Customer.REWARDS, Day.WEEKDAY), price.getRewardsWeekdayPrice());
     }
