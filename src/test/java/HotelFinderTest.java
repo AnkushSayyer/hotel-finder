@@ -1,5 +1,6 @@
 import com.hashmap.excercise.model.Customer;
 import com.hashmap.excercise.model.HotelCatalogue;
+import com.hashmap.excercise.model.Price;
 import com.hashmap.excercise.model.Request;
 import com.hashmap.excercise.service.HotelBookingCompany;
 import com.hashmap.excercise.util.DateFromStringUtil;
@@ -21,9 +22,9 @@ public class HotelFinderTest {
 
         if (!initialized){
 
-            hotelCatalogue.addHotel("LakeWood", 3, 110, 90, 80, 80);
-            hotelCatalogue.addHotel("BridgeWood", 4, 160, 60, 110, 50);
-            hotelCatalogue.addHotel("RidgeWood", 5, 220, 150, 100, 40);
+            hotelCatalogue.addHotel("LakeWood", 3, new Price(110, 90, 80, 80));
+            hotelCatalogue.addHotel("BridgeWood", 4, new Price(160, 60, 110, 50));
+            hotelCatalogue.addHotel("RidgeWood", 5, new Price(220, 150, 100, 40));
 
             initialized = true;
         }
