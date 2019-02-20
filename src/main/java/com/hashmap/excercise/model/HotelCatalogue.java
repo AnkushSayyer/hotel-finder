@@ -21,9 +21,9 @@ public class HotelCatalogue {
         return hotelList;
     }
 
-    public void addHotel(String name, int rating, Price price){
+    public void addHotel(String name, HotelDetail hotelDetail, Price price){
         Map<Category, Double> rateCard = new RateCard().generateRateCard(price);
-        hotelList.add(new Hotel(name, rating, rateCard));
+        hotelList.add(new Hotel(name, hotelDetail, rateCard));
     }
 
 }
