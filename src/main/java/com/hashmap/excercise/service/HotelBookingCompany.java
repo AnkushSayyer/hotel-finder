@@ -25,7 +25,11 @@ public class HotelBookingCompany implements BookingService {
         Hotel cheapestHotel = hotelList.get(0);
 
         for (Hotel currentHotel : hotelList) {
-            double currentHotelPrice = getTotal(currentHotel, clientRequest.getCustomer());
+            CustomerRequirement customerRequirement = clientRequest.getCustomerRequirement();
+            if (!(matchesRequirements(currentHotel, customerRequirement)))
+                continue;
+
+            double currentHotelPrice = getTotal(currentHotel, clientRequest.getCustomer(), customerRequirement.getRoomsRequired());
             if (minPrice > currentHotelPrice ||
                     ((minPrice == currentHotelPrice) && (cheapestHotel.getRating() < currentHotel.getRating()))
             ) {
@@ -34,6 +38,14 @@ public class HotelBookingCompany implements BookingService {
             }
         }
         return cheapestHotel;
+    }
+
+    private boolean matchesRequirements(Hotel currentHotel, CustomerRequirement customerRequirement) {
+        if(currentHotel.areRoomsAvailable(customerRequirement.getRoomsRequired()) &&
+                currentHotel.getAmenities().containsAll(customerRequirement.getAmenitiesRequired()))
+            return true;
+        else
+            return false;
     }
 
     private void calculateWeekdaysAndWeekends(LocalDate checkInDate, LocalDate checkOutDate) {
@@ -51,9 +63,9 @@ public class HotelBookingCompany implements BookingService {
         }
     }
 
-    private double getTotal(Hotel hotel, Customer customer){
-        return hotel.getRate(new Category(customer, Day.WEEKDAY))*weekdays +
-                hotel.getRate(new Category(customer, Day.WEEKEND))*weekends;
+    private double getTotal(Hotel hotel, Customer customer, int roomsRequired){
+        return (hotel.getRate(new Category(customer, Day.WEEKDAY))*weekdays +
+                hotel.getRate(new Category(customer, Day.WEEKEND))*weekends)*roomsRequired;
 
     }
 }
